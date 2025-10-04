@@ -1,0 +1,38 @@
+@import "tailwindcss";
+* {
+  box-sizing: border-box;
+  font-family: "cairo";
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #f8f8f8;
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
+
+.tracking-box::before {
+  content: "0%";
+  position: absolute;
+  top: -100%;
+}
+.tracking-box::after {
+  content: "100%";
+  position: absolute;
+  top: -100%;
+  left: 0;
+}
+
+.goal-box::after {
+  content: "100%";
+  position: absolute;
+  top: -200%;
+  left: 0;
+}
