@@ -25,7 +25,6 @@ const goalsSlice = createSlice({
         note: action.payload.note,
         moneySaved: 0,
       };
-      console.log(newGoal);
       state.push(newGoal);
       localStorage.setItem("goals", JSON.stringify([...state]));
     },
@@ -38,7 +37,6 @@ const goalsSlice = createSlice({
     },
     editGoal: (state, action) => {
       const index = state.findIndex((item) => item.id == action.payload.id);
-      console.log(action.payload.money);
       if (index !== -1) {
         state[index].id = action.payload.id;
         state[index].title = action.payload.title;
@@ -50,9 +48,7 @@ const goalsSlice = createSlice({
     },
     goalMoney: (state, action) => {
       const index = state.findIndex((item) => item.id == action.payload.id);
-      // console.log(Number(action.payload.money));
-      // console.log(state[index]);
-      state[index].moneySaved += Number(action.payload.money)
+      state[index].moneySaved += Number(action.payload.money);
     },
   },
 });

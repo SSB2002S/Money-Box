@@ -1,13 +1,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
-import Button from "../../components/Buttons/GlobalButton";
+import Button from "../Buttons/GlobalButton";
+import { faDollar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-regular-svg-icons";
-import { editTransactions } from "./transactionsSlice";
 
-export default function EditTransaction({ dispatch, item }) {
+export default function AddTransaction({ addTransactions, dispatch }) {
   let [isOpen, setIsOpen] = useState(false);
-  const idRef = useRef("");
   const titleRef = useRef("");
   const categoryRef = useRef("");
   const amountRef = useRef("");
@@ -27,7 +25,6 @@ export default function EditTransaction({ dispatch, item }) {
     e.preventDefault();
 
     const data = {
-      id: idRef.current.value,
       title: titleRef.current.value,
       category: categoryRef.current.value,
       amount: amountRef.current.value,
@@ -38,7 +35,8 @@ export default function EditTransaction({ dispatch, item }) {
           ? "لا توجد ملاحظات"
           : noteRef.current.value,
     };
-    dispatch(editTransactions(data));
+    dispatch(addTransactions(data));
+
     titleRef.current.value = "";
     amountRef.current.value = "";
     dateRef.current.value = "";
@@ -48,13 +46,11 @@ export default function EditTransaction({ dispatch, item }) {
   return (
     <>
       <div>
-        <button type='button' onClick={openModal}>
-          <FontAwesomeIcon
-            icon={faEdit}
-            title='تعديل'
-            className='text-blue-500 transition hover:scale-110'
-          />
-        </button>
+        <Button
+          title={"اضافة معاملة"}
+          icon={<FontAwesomeIcon icon={faDollar} />}
+          action={openModal}
+        />
       </div>
 
       <Transition show={isOpen} as={Fragment}>
@@ -84,24 +80,9 @@ export default function EditTransaction({ dispatch, item }) {
                   <Dialog.Title
                     as='h3'
                     className='text-xl font-semibold leading-6 text-gray-900 text-center mb-4'>
-                    تعديل معاملة
+                    اضافة معاملة
                   </Dialog.Title>
                   <form onSubmit={handleForm} className='text-right'>
-                    <div className='flex flex-col mb-4'>
-                      <label htmlFor='nameTransaction' className='mb-1'>
-                        ID<span className='text-red-400'>*</span>
-                      </label>
-                      <input
-                        type='text'
-                        name='nameTransaction'
-                        id='nameTransaction'
-                        placeholder='ادخل اسم المعاملة'
-                        ref={idRef}
-                        defaultValue={item.id}
-                        disabled
-                        className='bg-gray-300 text-gray-500 border border-gray-300 rounded px-2 py-1 '
-                      />
-                    </div>
                     <div className='flex flex-col mb-4'>
                       <label htmlFor='nameTransaction' className='mb-1'>
                         اسم المعاملة<span className='text-red-400'>*</span>
@@ -112,7 +93,6 @@ export default function EditTransaction({ dispatch, item }) {
                         id='nameTransaction'
                         placeholder='ادخل اسم المعاملة'
                         ref={titleRef}
-                        defaultValue={item.title}
                         required
                         className='border border-gray-300 rounded px-2 py-1 '
                       />
@@ -126,7 +106,6 @@ export default function EditTransaction({ dispatch, item }) {
                         name='type'
                         id='type'
                         required
-                        defaultValue={item.category}
                         ref={categoryRef}>
                         <option value='الطعام والشراب'>الطعام والشراب</option>
                         <option value='التسوق'>التسوق</option>
@@ -151,7 +130,6 @@ export default function EditTransaction({ dispatch, item }) {
                         id='money'
                         placeholder='ادخل المبلغ'
                         required
-                        defaultValue={item.amount}
                         ref={amountRef}
                         className='border border-gray-300 rounded px-2 py-1 '
                       />
@@ -165,7 +143,6 @@ export default function EditTransaction({ dispatch, item }) {
                         name='type'
                         id='type'
                         ref={typeRef}
-                        defaultValue={item.type}
                         required>
                         <option value='دخل'>دخل</option>
                         <option value='مصروف'>مصروف</option>
@@ -179,7 +156,6 @@ export default function EditTransaction({ dispatch, item }) {
                         type='date'
                         name='date'
                         id='date'
-                        defaultValue={item.date}
                         ref={dateRef}
                         required
                         className='border border-gray-300 rounded px-2 py-1 '
@@ -195,7 +171,7 @@ export default function EditTransaction({ dispatch, item }) {
                         id='note'
                         cols='1'
                         rows='3'
-                        defaultValue={item.note}
+                        defaultValue={"لا يوجد ملاحظات"}
                         ref={noteRef}
                         placeholder='اكتب ملاحظة (ان وجدت)'></textarea>
                     </div>
@@ -203,7 +179,6 @@ export default function EditTransaction({ dispatch, item }) {
                       <Button
                         title={"حفظ"}
                         type={"submit"}
-                        action={() => closeModal()}
                       />
                       <Button
                         title={"إلغاء"}

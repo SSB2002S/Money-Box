@@ -1,7 +1,7 @@
-import MonthlyBudgetList from "../features/transactions/MonthlyTransactionsList";
+// import MonthlyBudgetList from "../features/transactions/MonthlyTransactionsList";
 import MonthlyBudget from "../components/monthlyBudget/MonthlyBudget";
 import SavingGoals from "../components/savingGoals/SavingGoals";
-import AddTransaction from "../features/transactions/AddTransactionButton";
+// import AddTransaction from "../features/transactions/AddTransactionButton";
 import { useDispatch, useSelector } from "react-redux";
 import AddGoal from "../components/Buttons/AddGoal";
 import {
@@ -11,6 +11,7 @@ import {
   totalExpenses,
   residual,
 } from "../features/transactions/transactionsSlice";
+import MonthlyBudgetList from "../components/savingTransactions/MonthlyTransactionsList";
 
 const Dashbard = () => {
   const dispatch = useDispatch();
@@ -61,10 +62,6 @@ const Dashbard = () => {
           <div></div>
         </div>
         <div className=' inset-0 flex items-center justify-center gap-x-8'>
-          {/* <AddTransaction
-            addTransactions={addTransactions}
-            dispatch={dispatch}
-          /> */}
           <AddGoal />
         </div>
       </section>

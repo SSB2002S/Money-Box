@@ -7,12 +7,12 @@ const MonthlyBudget = ({ totalIncom, totalExpenses, residual }) => {
       <h2 className='text-2xl text-emerald-500 text-center mt-2 mb-10 font-semibolds'>
         الميزانية
       </h2>
+
       <div className='tracking-box relative w-full h-6 bg-emerald-200 mx-auto my-8 rounded overflow-hidden'>
-        {/* النسبة المئوية في منتصف الشريط */}
         <div className='absolute w-full h-full flex items-center justify-center z-10 text-sm font-medium text-gray-700'>
           {totalIncom > 0 ? Math.round((totalExpenses / totalIncom) * 100) : 0}%
         </div>
-        {/* شريط التقدم */}
+
         <div
           className='tracking-bar h-full rounded-r transition-all duration-500 absolute top-0 right-0'
           style={{
@@ -35,6 +35,7 @@ const MonthlyBudget = ({ totalIncom, totalExpenses, residual }) => {
           <p>الرصيد المتبقي هو {residual} ريال</p>
         </div>
       </div>
+
       {/* <div className='absolute bottom-4 right-1/2 transform translate-x-1/2'>
         <Button title={"إعدادات الميزانية"} action={alert} />
       </div> */}

@@ -7,7 +7,7 @@ const Goal = ({ goal }) => {
     goal.money > 0 ? (goal.moneySaved / goal.money) * 100 : 0;
 
   return (
-    <div className='px-4 mt-4'>
+    <div className='px-4 mt-2'>
       <div
         className={`goal-title flex items-center gap-x-3 p-4 rounded-lg transition-all duration-300 ${
           isCompleted ? "bg-emerald-50" : ""
@@ -46,11 +46,9 @@ const Goal = ({ goal }) => {
             </span>
           </div>
           <div className='goal-box relative right-0 mt-2 w-full h-3 bg-emerald-200 rounded-full overflow-hidden'>
-            {/* النسبة المئوية فوق شريط التقدم */}
             <div className='absolute w-full h-full flex items-center justify-center z-10 text-xs font-bold text-gray-700'>
               {Math.round(progressPercentage)}%
             </div>
-            {/* شريط التقدم */}
             <div
               className='h-full rounded-r transition-all duration-500 absolute top-0 right-0'
               style={{
@@ -62,6 +60,7 @@ const Goal = ({ goal }) => {
                   : "#34d399",
               }}></div>
           </div>
+
           {/* {isCompleted && (
             <div className='text-emerald-500 text-sm mt-0.5 font-medium text-center'>
               🎉 تم تحقيق الهدف! 🎉

@@ -23,11 +23,7 @@ const AllGoals = ({ data }) => {
   return (
     <>
       <div>
-        <Button
-          title={"جميع أهدافي"}
-          // icon={<FontAwesomeIcon icon={faCrosshairs} />}
-          action={openModal}
-        />
+        <Button title={"جميع أهدافي"} action={openModal} />
       </div>
 
       <Transition show={isOpen} as={Fragment}>
@@ -59,54 +55,56 @@ const AllGoals = ({ data }) => {
                     className='text-xl font-semibold leading-6 text-gray-900 text-center mb-4'>
                     اضافة هدف
                   </Dialog.Title>
-                  <table className='w-full text-center'>
-                    <thead className='border border-gray-300'>
-                      <tr className=''>
-                        <th className='p-1'>الهدف</th>
-                        <th className='p-1'>المبلغ المستهدف</th>
-                        <th className='p-1'>الموعد النهائي</th>
-                        <th className='p-1'>ملاحظة</th>
-                        <th className='p-1'>اجراء</th>
-                      </tr>
-                    </thead>
-                    <tbody className='border border-gray-300'>
-                      {data.map((goal) => {
-                        return (
-                          <tr className='text-center' key={goal.id}>
-                            <td className='p-3'>{goal.title}</td>
-                            <td className='p-3'>{goal.money}</td>
-                            <td className='p-3'>{goal.date}</td>
-                            <td className='p-3'>{goal.note}</td>
-                            <td className='p-3 flex justify-center gap-2'>
-                              <EditGoalButton goal={goal} />
-                              <button
-                                type='button'
-                                onClick={() => dispatch(deleteGoal(goal.id))}>
-                                <FontAwesomeIcon
-                                  icon={faTrashAlt}
-                                  title='حذف'
-                                  className='text-red-500 transition hover:scale-110'
-                                  onClick={() =>
-                                    Swal.fire({
-                                      icon: "success",
-                                      iconColor: "#ff5959",
-                                      title: "Deleted",
-                                      color: "#ff5959",
-                                      showConfirmButton: false,
-                                      timer: 1000,
-                                    })
-                                  }
-                                />
-                              </button>
-                              {goal.moneySaved >= goal.money ? null : (
-                                <AddMoneyToGaol goal={goal} />
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                  <div className='max-sm:overflow-x-scroll'>
+                    <table className='w-full text-center'>
+                      <thead className='border border-gray-300'>
+                        <tr className=''>
+                          <th className='p-1'>الهدف</th>
+                          <th className='p-1'>المبلغ المستهدف</th>
+                          <th className='p-1'>الموعد النهائي</th>
+                          <th className='p-1'>ملاحظة</th>
+                          <th className='p-1'>اجراء</th>
+                        </tr>
+                      </thead>
+                      <tbody className='border border-gray-300'>
+                        {data.map((goal) => {
+                          return (
+                            <tr className='text-center' key={goal.id}>
+                              <td className='p-3'>{goal.title}</td>
+                              <td className='p-3'>{goal.money}</td>
+                              <td className='p-3'>{goal.date}</td>
+                              <td className='p-3'>{goal.note}</td>
+                              <td className='p-3 flex justify-center gap-2'>
+                                <EditGoalButton goal={goal} />
+                                <button
+                                  type='button'
+                                  onClick={() => dispatch(deleteGoal(goal.id))}>
+                                  <FontAwesomeIcon
+                                    icon={faTrashAlt}
+                                    title='حذف'
+                                    className='text-red-500 transition hover:scale-110'
+                                    onClick={() =>
+                                      Swal.fire({
+                                        icon: "success",
+                                        iconColor: "#ff5959",
+                                        title: "Deleted",
+                                        color: "#ff5959",
+                                        showConfirmButton: false,
+                                        timer: 1000,
+                                      })
+                                    }
+                                  />
+                                </button>
+                                {goal.moneySaved >= goal.money ? null : (
+                                  <AddMoneyToGaol goal={goal} />
+                                )}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
