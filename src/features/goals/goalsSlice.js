@@ -23,6 +23,7 @@ const goalsSlice = createSlice({
         money: Number(action.payload.money),
         date: action.payload.date,
         note: action.payload.note,
+        moneySaved: 0,
       };
       console.log(newGoal);
       state.push(newGoal);
@@ -47,11 +48,13 @@ const goalsSlice = createSlice({
       }
       localStorage.setItem("goals", JSON.stringify([...state]));
     },
+    goalMoney: (state, action) => {
+      const index = state.findIndex((item) => item.id == action.payload.id);
+      // console.log(Number(action.payload.money));
+      // console.log(state[index]);
+      state[index].moneySaved += Number(action.payload.money)
+    },
   },
-
-  // extraReducers: builder =>{
-  //   builder.addCase()
-  // }
 });
-export const { addGoal, deleteGoal, editGoal } = goalsSlice.actions;
+export const { addGoal, deleteGoal, editGoal, goalMoney } = goalsSlice.actions;
 export default goalsSlice.reducer;

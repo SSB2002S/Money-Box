@@ -2,6 +2,8 @@ import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import EditTransaction from "./EditTransactionButton";
 import Swal from "sweetalert2";
+import { addTransactions } from "./transactionsSlice";
+import AddTransaction from "./AddTransactionButton";
 
 const MonthlyBudgetList = ({
   state,
@@ -77,6 +79,12 @@ const MonthlyBudgetList = ({
               ))}
             </tbody>
           </table>
+          <div className="flex justify-center mt-4">
+            <AddTransaction
+              addTransactions={addTransactions}
+              dispatch={dispatch}
+            />
+          </div>
         </div>
       </section>
     </>

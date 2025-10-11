@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import Button from "../Buttons/GlobalButton";
 import { useDispatch } from "react-redux";
-import { editGoal } from "../../features/goals/goalsSlice";
+import { goalMoney } from "../../features/goals/goalsSlice";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const AddMoneyToGaol = ({ goal }) => {
@@ -35,7 +35,7 @@ const AddMoneyToGaol = ({ goal }) => {
       id: idRef.current.value,
       money: moneyRef.current.value,
     };
-    dispatch(editGoal(data));
+    dispatch(goalMoney(data));
     moneyRef.current.value = "";
   };
   return (
@@ -95,7 +95,7 @@ const AddMoneyToGaol = ({ goal }) => {
                         type='text'
                         name='nameTransaction'
                         id='nameTransaction'
-                        placeholder='ادخل اسم المعاملة'
+                        placeholder=''
                         ref={idRef}
                         defaultValue={goal.id}
                         disabled

@@ -79,7 +79,6 @@ const AllGoals = ({ data }) => {
                             <td className='p-3'>{goal.note}</td>
                             <td className='p-3 flex justify-center gap-2'>
                               <EditGoalButton goal={goal} />
-
                               <button
                                 type='button'
                                 onClick={() => dispatch(deleteGoal(goal.id))}>
@@ -99,24 +98,9 @@ const AllGoals = ({ data }) => {
                                   }
                                 />
                               </button>
-                              <AddMoneyToGaol goal={goal} />
-                              {/* <button type='button'>
-                                <FontAwesomeIcon
-                                  icon={faPlus}
-                                  title='اضافة'
-                                  className='text-green-500 transition hover:scale-110'
-                                  onClick={() =>
-                                    Swal.fire({
-                                      icon: "success",
-                                      iconColor: "#ff5959",
-                                      title: "Deleted",
-                                      color: "#ff5959",
-                                      showConfirmButton: false,
-                                      timer: 1000,
-                                    })
-                                  }
-                                />
-                              </button> */}
+                              {goal.moneySaved >= goal.money ? null : (
+                                <AddMoneyToGaol goal={goal} />
+                              )}
                             </td>
                           </tr>
                         );

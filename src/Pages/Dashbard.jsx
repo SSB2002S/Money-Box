@@ -5,7 +5,6 @@ import AddTransaction from "../features/transactions/AddTransactionButton";
 import { useDispatch, useSelector } from "react-redux";
 import AddGoal from "../components/Buttons/AddGoal";
 import {
-  addTransactions,
   editTransactions,
   deleteTransactions,
   totalIncom,
@@ -45,6 +44,7 @@ const Dashbard = () => {
         deleteTransactions={deleteTransactions}
         dispatch={dispatch}
       />
+
       <section className='bg-white my-8 p-4'>
         <div
           className='grid min-md:grid-cols-2  gap-x-4 mb-8'
@@ -61,10 +61,10 @@ const Dashbard = () => {
           <div></div>
         </div>
         <div className=' inset-0 flex items-center justify-center gap-x-8'>
-          <AddTransaction
+          {/* <AddTransaction
             addTransactions={addTransactions}
             dispatch={dispatch}
-          />
+          /> */}
           <AddGoal />
         </div>
       </section>
