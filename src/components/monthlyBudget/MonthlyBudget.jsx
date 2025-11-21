@@ -26,13 +26,13 @@ const MonthlyBudget = ({ totalIncom, totalExpenses, residual }) => {
         <div className='flex items-center gap-x-4'>
           <FontAwesomeIcon icon={faSquare} className='text-red-500' />
           <p>
-            انفقت {totalExpenses} ريال من اصل {totalIncom} ريال
+            انفقت {totalExpenses} ريال من إجمالي {totalIncom} ريال
           </p>
         </div>
 
         <div className='flex items-center gap-x-4 mt-4'>
           <FontAwesomeIcon icon={faSquare} className='text-emerald-500' />
-          <p>الرصيد المتبقي هو {residual} ريال</p>
+          <p>الرصيد المتبقي في حسابك هو {residual} ريال</p>
         </div>
       </div>
 

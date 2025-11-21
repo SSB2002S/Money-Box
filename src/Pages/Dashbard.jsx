@@ -19,7 +19,7 @@ const Dashbard = () => {
 
   return (
     <main className='mt-20' id='mainPage'>
-      <div className='info py-4 px-4 grid max-sm:grid-cols-1 max-sm:px-4 grid-cols-3 text-center gap-6 bg-white border-2 border-gray-100 overflow-hidden rounded'>
+      <div className='info py-4 px-4 grid max-sm:grid-cols-1 max-sm:px-4 grid-cols-3 text-center gap-6 bg-white border-2 border-gray-100 overflow-hidden rounded-xl'>
         <div className='bg-emerald-200 p-4 rounded-lg transition-all hover:scale-105'>
           <p className='mb-4 text-xl font-semibold'>اجمالي الدخل</p>
           <span className='text-lg'>
@@ -46,7 +46,7 @@ const Dashbard = () => {
         dispatch={dispatch}
       />
 
-      <section className='bg-white my-8 p-4'>
+      <section className='bg-white my-8 p-4 rounded-md'>
         <div
           className='grid min-md:grid-cols-2  gap-x-4 mb-8'
           id='budgets&Goals'>
