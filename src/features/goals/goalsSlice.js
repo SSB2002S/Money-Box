@@ -49,6 +49,7 @@ const goalsSlice = createSlice({
     goalMoney: (state, action) => {
       const index = state.findIndex((item) => item.id == action.payload.id);
       state[index].moneySaved += Number(action.payload.money);
+      localStorage.setItem("goals", JSON.stringify([...state]));
     },
   },
 });
