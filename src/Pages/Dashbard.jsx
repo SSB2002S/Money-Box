@@ -20,19 +20,19 @@ const Dashbard = () => {
   return (
     <main className="mt-20" id="mainPage">
       <div className="info py-4 px-4 grid max-sm:grid-cols-1 max-sm:px-4 grid-cols-3 text-center gap-6 bg-white border-2 border-gray-100 overflow-hidden rounded-xl">
-        <div className="bg-emerald-200 p-4 rounded-lg transition-all hover:scale-105">
+        <div className="bg-emerald-200 p-4 rounded-lg transition-all hover:scale-105 drop-shadow-sm">
           <p className="mb-4 text-xl font-semibold">اجمالي الدخل</p>
           <span className="text-lg">
             {totalIncom} <span>ريال</span>
           </span>
         </div>
-        <div className="bg-red-200 p-4 rounded-lg transition-all hover:scale-105">
+        <div className="bg-red-200 p-4 rounded-lg transition-all hover:scale-105 drop-shadow-sm">
           <p className="mb-4 text-xl font-semibold">اجمالي المصروفات</p>
           <span className="text-lg">
             {totalExpenses} <span>ريال</span>
           </span>
         </div>
-        <div className="bg-sky-200 p-4 rounded-lg transition-all hover:scale-105">
+        <div className="bg-sky-200 p-4 rounded-lg transition-all hover:scale-105 drop-shadow-sm">
           <p className="mb-4 text-xl font-semibold">الرصيد المتبقي</p>
           <span className="text-lg">
             {residual} <span>ريال</span>

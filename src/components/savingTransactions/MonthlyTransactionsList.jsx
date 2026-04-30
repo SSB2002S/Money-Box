@@ -45,7 +45,7 @@ const MonthlyBudgetList = ({ state, dispatch, deleteTransactions }) => {
       td { border: 1px solid #e5e7eb; padding: 8px; text-align: center; }
     `;
     newWin.document.write(
-      `<!doctype html><html><head><meta charset="utf-8"><title>طباعة المعاملات</title><style>${style}</style></head><body>${clone.outerHTML}</body></html>`
+      `<!doctype html><html><head><meta charset="utf-8"><title>طباعة المعاملات</title><style>${style}</style></head><body>${clone.outerHTML}</body></html>`,
     );
     newWin.document.close();
     newWin.focus();
@@ -53,56 +53,58 @@ const MonthlyBudgetList = ({ state, dispatch, deleteTransactions }) => {
   };
   return (
     <>
-      <section className='mt-8' id='transaction'>
-        <div className='bg-white border-2 border-gray-100 rounded-md p-2 py-4'>
-          <h2 className='text-2xl text-emerald-500 text-center mt-2 font-semibold'>
+      <section className="mt-8" id="transaction">
+        <div className="bg-white border-2 border-gray-100 rounded-md p-2 py-4">
+          <h2 className="text-2xl text-emerald-500 text-center mt-2 font-semibold">
             المعاملات الاخيرة
           </h2>
-          <div className='bg-white max-sm:overflow-x-scroll px-2'>
-            <table id='transactions-table' className='w-full mt-8'>
-              <thead className='bg-emerald-600 text-white'>
-                <tr className=''>
-                  <th hidden className='p-2'>
+          <div className="bg-white max-sm:overflow-x-scroll px-2">
+            <table id="transactions-table" className="w-full mt-8">
+              <thead className="bg-emerald-600 text-white">
+                <tr className="">
+                  <th hidden className="p-2">
                     رقم
                   </th>
-                  <th className='p-2'>الاسم</th>
-                  <th className='p-2'>المبلغ</th>
-                  <th className='p-2'>النوع</th>
-                  <th className='p-2'>التاريخ</th>
-                  <th className='p-2'>الفئة</th>
-                  <th className='p-2'>ملاحظة</th>
-                  <th className='p-2'>اجراء</th>
+                  <th className="p-2">الاسم</th>
+                  <th className="p-2">المبلغ</th>
+                  <th className="p-2">النوع</th>
+                  <th className="p-2">التاريخ</th>
+                  <th className="p-2">الفئة</th>
+                  <th className="p-2">ملاحظة</th>
+                  <th className="p-2">اجراء</th>
                 </tr>
               </thead>
-              <tbody className='text-center'>
+              <tbody className="text-center">
                 {state.map((item) => (
                   <tr
-                    className='border border-gray-200 transition-all hover:bg-gray-100'
-                    key={item.id}>
-                    <td hidden className='p-2'>
+                    className="border border-gray-200 transition-all hover:bg-gray-100"
+                    key={item.id}
+                  >
+                    <td hidden className="p-2">
                       {Number(item.id) + 1}
                     </td>
-                    <td className='p-2'>{item.title}</td>
-                    <td className='p-2'>
+                    <td className="p-2">{item.title}</td>
+                    <td className="p-2">
                       {item.amount} <span>ريال</span>
                     </td>
-                    <td className='p-2'>{item.type}</td>
-                    <td className='p-2'>{item.date}</td>
-                    <td className='p-2'>{item.category}</td>
-                    <td className='p-2'>{item.note}</td>
-                    <td className='p-2 flex justify-center gap-4'>
+                    <td className="p-2">{item.type}</td>
+                    <td className="p-2">{item.date}</td>
+                    <td className="p-2">{item.category}</td>
+                    <td className="p-2">{item.note}</td>
+                    <td className="p-2 flex justify-center gap-4">
                       <EditTransaction
                         item={item}
                         // editTransactions={editTransactions}
                         dispatch={dispatch}
                       />
                       <button
-                        type='button'
-                        onClick={() => dispatch(deleteTransactions(item.id))}>
+                        type="button"
+                        onClick={() => dispatch(deleteTransactions(item.id))}
+                      >
                         <FontAwesomeIcon
                           icon={faTrashAlt}
-                          title='حذف'
-                          className='text-red-500 transition hover:scale-110'
+                          title="حذف"
+                          className="text-red-500 transition hover:scale-110"
                           onClick={() =>
                             Swal.fire({
                               icon: "success",
@@ -122,17 +124,18 @@ const MonthlyBudgetList = ({ state, dispatch, deleteTransactions }) => {
             </table>
           </div>
         </div>
-        <div className='flex justify-center mt-4 gap-4'>
+        <div className="flex justify-center mt-4 gap-4">
           <AddTransaction
             addTransactions={addTransactions}
             dispatch={dispatch}
           />
           <button
-            type='button'
+            type="button"
             onClick={printTransactions}
-            className='bg-blue-500 text-white px-4 py-2 rounded hover:brightness-95'>
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:brightness-95 drop-shadow-md"
+          >
             طباعة المعاملات
-            <FontAwesomeIcon icon={faPrint} className='mr-1' />
+            <FontAwesomeIcon icon={faPrint} className="mr-1" />
           </button>
         </div>
       </section>
